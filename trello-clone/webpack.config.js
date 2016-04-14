@@ -2,6 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 const packageData = require('./package.json');
 const filename = [packageData.name, packageData.version, 'js'];
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
 	entry: path.resolve(__dirname, 'app', packageData.main),
@@ -19,10 +20,18 @@ module.exports = {
 				query: {
 					presets: ['es2015', 'react']
 				}
-			}
+			},
+      {
+        test: /\.scss$/,
+        loader: 'sass-loader'
+      }
 		]
 	},
 	resolve: {
 		extensions: ['', '.js', '.jsx']
 	},
+  plugins: [new HtmlWebpackPlugin({
+      title: 'My App',
+      filename: './app/index.html'
+    })]
 };
