@@ -6,11 +6,13 @@ import Card from './card';
 
 class List extends React.Component {
 
-  constructor (title) {
+  constructor (title, cards = []) {
     super();
     this.title = title;
-    this.cards = []
-    this.cards.push(React.createElement(Card.bind(null, 'Shall we?')));
+    this.cards = [];
+    cards.forEach(card => {
+      this.cards.push(React.createElement(Card.bind(null, card)));
+    }, this);
   }
 
   render () {

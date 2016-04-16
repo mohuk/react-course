@@ -8,9 +8,9 @@ class Board extends React.Component {
 	constructor() {
 		super();
 		this.lists = [];
-    this.lists.push(React.createElement(List.bind(null, 'To Do')));
-    this.lists.push(React.createElement(List.bind(null, 'Doing')));
-    this.lists.push(React.createElement(List.bind(null, 'Done')));
+    this.lists.push(React.createElement(List.bind(null, 'To Do', ['One'])));
+    this.lists.push(React.createElement(List.bind(null, 'Doing', ['Two', 'Three'])));
+    this.lists.push(React.createElement(List.bind(null, 'Done', ['Four'])));
 	}
 
 	render() {
@@ -23,7 +23,7 @@ class Board extends React.Component {
         <section className="content">
             <div className="lists-content">
               <strong>Things to get done</strong>
-              <div className="lists">
+              <div className="lists clearfix">
                 { lists }
               </div>
             </div>
