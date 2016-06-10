@@ -1,23 +1,27 @@
 'use strict';
+
 import React from 'react';
 
 class Card extends React.Component {
-  constructor(content) {
+  constructor() {
     super();
-    this.content = content;
   }
 
   render() {
-    let title = 'Card';
-    let content = this.content;
     return (
       <div className="card">
         <p className="content">
-          { content }
+          {
+            this.props.content
+          }
         </p>
       </div>
     );
   }
 }
+
+Card.propTypes = {
+  content: React.PropTypes.string
+};
 
 export default Card;

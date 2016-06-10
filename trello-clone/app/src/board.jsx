@@ -7,10 +7,36 @@ class Board extends React.Component {
 
 	constructor() {
 		super();
-		this.lists = [];
-    this.lists.push(React.createElement(List.bind(null, 'To Do', ['One'])));
-    this.lists.push(React.createElement(List.bind(null, 'Doing', ['Two', 'Three'])));
-    this.lists.push(React.createElement(List.bind(null, 'Done', ['Four'])));
+
+		this.lists = [{
+        id: 101,
+        title: 'To Do',
+        cards: [{
+          id: 1001,
+          content: 'Do you know what it feels like?'
+        }]
+      },
+      {
+        id: 102,
+        title: 'Doing',
+        cards: [{
+          id: 1002,
+          content: 'Chilling'
+        },
+        {
+          id: 1003,
+          content: 'Procrastinating'
+        }]
+      },
+      {
+        id: 103,
+        title: 'Done',
+        cards: [{
+          id: 1004,
+          content: 'Like a BOSS'
+        }]
+      }
+    ];
 	}
 
 	render() {
@@ -24,7 +50,11 @@ class Board extends React.Component {
             <div className="lists-content">
               <strong>Things to get done</strong>
               <div className="lists clearfix">
-                { lists }
+                {
+                  this.lists.map(list => {
+                    return <List key={list.id} title={list.title} cards={list.cards}/>
+                  })
+                }
               </div>
             </div>
         </section>

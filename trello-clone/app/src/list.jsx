@@ -6,27 +6,29 @@ import Card from './card';
 
 class List extends React.Component {
 
-  constructor (title, cards = []) {
+  constructor () {
     super();
-    this.title = title;
-    this.cards = [];
-    cards.forEach(card => {
-      this.cards.push(React.createElement(Card.bind(null, card)));
-    }, this);
   }
 
   render () {
-    let cards = this.cards;
-    let title = this.title;
     return (
       <div className="list">
-        <strong>{title}</strong>
+        <strong>{this.props.title}</strong>
         <div>
-          { cards }
+        {
+          this.props.cards.map(function(card){
+            return <Card key={card.id} content={card.content}/>
+          })
+        }
         </div>
       </div>
     )
   }
 }
+
+List.propTypes = {
+  title: React.PropTypes.string,
+  cards: React.PropTypes.array
+};
 
 export default List;
